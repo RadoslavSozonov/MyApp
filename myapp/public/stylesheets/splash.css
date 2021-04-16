@@ -1,0 +1,119 @@
+:root {
+    --darkColor: rgb(175, 247, 226);
+    --lightColor: rgb(252, 255, 217);
+}
+
+body {
+    z-index: 0;
+    background-color: rgb(213, 255, 255);
+}
+
+.grid-container {
+    display: grid;
+    grid-template-rows: 130px 130px 130px 130px;
+    grid-template-columns: 140px 140px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: center;
+    position: absolute;
+    font-size: 185%;
+    color: darkblue;
+}
+
+.grid-container div:nth-child(4n) {
+    background-color: var(--lightColor);
+}
+
+.grid-container div:nth-child(4n+3) {
+    background-color: var(--lightColor);
+}
+
+.grid-container div:nth-child(4n+1) {
+    background-color: var(--darkColor);
+}
+
+.grid-container div:nth-child(4n+2) {
+    background-color: var(--darkColor);
+}
+
+
+.container {
+    position: relative;
+    display: grid;
+    text-align: center;
+    color: white;
+  }
+
+.centerImage {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 62%;
+}
+
+.centerButton {
+    margin-top: 150px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 4px;
+    font-size: 60px;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    background-color: whitesmoke;
+    animation-name: gameAnim;
+    animation-duration: 4s;
+}  
+
+.centeredText {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    padding-bottom: 350px;
+    transform: translate(-50%, -50%);
+    font-size: 600%;
+}
+
+.errorScreen {
+    position: absolute;
+    text-align: right;
+    color: black;
+    margin-left: 85%;
+    margin-right: 10px;
+    font-size: 300%;
+}
+
+@keyframes gameAnim {
+    0%   {background-color:red}
+    25%  {background-color:yellow}
+    50%  {background-color:blue}
+    75%  {background-color:green}
+    100% {background-color:whitesmoke}
+}
+
+@media screen and (max-width: 950px) {
+    body {
+        background-color: rgb(255, 153, 153);
+    }
+}
+
+p::after {
+    content: " ~ ";
+}
+
+p::before {
+    content: " ~ ";
+}
+
+button {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+button:hover {
+    color: green;
+}
+
+button:active {
+    color: navy;
+}

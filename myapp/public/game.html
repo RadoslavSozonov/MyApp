@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+
+
+<head>
+  <title>
+    Ludo
+  </title>
+  <link rel="stylesheet" href="stylesheets/game.css">
+</head>
+
+<body>
+  <audio id="myAudio">
+    <source src="dice.mp3">
+  </audio>
+  <header>
+    <!--<div><input type="button" id="startButton" value="Start the game" onclick="startGame()"></div>-->
+    <!-- Start the game -->
+    <div>
+      <div class="question" data-name="Click the dice if it is the same color as you and move a pawn">
+        <img src="./images/QuestionMark.png" class="QuestionMark">
+      </div>
+      <input type="button" id="dice" class="dice" value="1" onclick="rollTheDice()">
+      <div class="plColor">
+        <cite id="plColor"></cite>
+      </div>
+      <div class ="timer">
+        <span id="time">00:00</span>
+      </div>
+    </div>
+    <!--Roll the dice-->
+  </header>
+  <div id="container">
+    <table style="width:100%">
+      <!-- Here we create our board. It is a table 720 X 720 with 15 squares each 48 X 48 -->
+      <tr>
+        <th class="red"></th>
+        <th class="red"></th>
+        <th class="red"></th>
+        <th class="red"></th>
+        <th class="red"></th>
+        <th class="red"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="green"></th>
+        <th class="green"></th>
+        <th class="green"></th>
+        <th class="green"></th>
+        <th class="green"></th>
+        <th class="green"></th>
+      </tr>
+      <tr>
+        <th class="red"></th>
+        <th class="redwhite"></th>
+        <th class="redwhite"></th>
+        <th class="redwhite"></th>
+        <th class="redwhite"></th>
+        <th class="red"></th>
+        <th></th>
+        <th class="greenBorder"></th>
+        <th class="greenBorder"></th>
+        <th class="green"></th>
+        <th class="greenwhite"></th>
+        <th class="greenwhite"></th>
+        <th class="greenwhite"></th>
+        <th class="greenwhite"></th>
+        <th class="green"></th>
+      </tr>
+      <tr>
+        <th class="red"></th>
+        <th class="redwhite"></th>
+        <th class="redBorder"></th>
+        <th class="redBorder"></th>
+        <th class="redwhite"></th>
+        <th class="red"></th>
+        <th></th>
+        <th class="greenBorder"></th>
+        <th></th>
+        <th class="green"></th>
+        <th class="greenwhite"></th>
+        <th class="greenBorder"></th>
+        <th class="greenBorder"></th>
+        <th class="greenwhite"></th>
+        <th class="green"></th>
+      </tr>
+      <tr>
+        <th class="red"></th>
+        <th class="redwhite"></th>
+        <th class="redBorder"></th>
+        <th class="redBorder"></th>
+        <th class="redwhite"></th>
+        <th class="red"></th>
+        <th></th>
+        <th class="greenBorder"></th>
+        <th></th>
+        <th class="green"></th>
+        <th class="greenwhite"></th>
+        <th class="greenBorder"></th>
+        <th class="greenBorder"></th>
+        <th class="greenwhite"></th>
+        <th class="green"></th>
+      </tr>
+      <tr>
+        <th class="red"></th>
+        <th class="redwhite"></th>
+        <th class="redwhite"></th>
+        <th class="redwhite"></th>
+        <th class="redwhite"></th>
+        <th class="red"></th>
+        <th></th>
+        <th class="greenBorder"></th>
+        <th></th>
+        <th class="green"></th>
+        <th class="greenwhite"></th>
+        <th class="greenwhite"></th>
+        <th class="greenwhite"></th>
+        <th class="greenwhite"></th>
+        <th class="green"></th>
+      </tr>
+      <tr>
+        <th class="red"></th>
+        <th class="red"></th>
+        <th class="red"></th>
+        <th class="red"></th>
+        <th class="red"></th>
+        <th class="red"></th>
+        <th></th>
+        <th class="greenBorder"></th>
+        <th></th>
+        <th class="green"></th>
+        <th class="green"></th>
+        <th class="green"></th>
+        <th class="green"></th>
+        <th class="green"></th>
+        <th class="green"></th>
+      </tr>
+      <tr>
+        <th></th>
+        <th class="redBorder"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="neutral"></th>
+        <th class="neutral"></th>
+        <th class="neutral"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th></th>
+        <th class="redBorder"></th>
+        <th class="redBorder"></th>
+        <th class="redBorder"></th>
+        <th class="redBorder"></th>
+        <th class="redBorder"></th>
+        <th class="neutral"></th>
+        <th class="neutral"></th>
+        <th class="neutral"></th>
+        <th class="yellowBorder"></th>
+        <th class="yellowBorder"></th>
+        <th class="yellowBorder"></th>
+        <th class="yellowBorder"></th>
+        <th class="yellowBorder"></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="neutral"></th>
+        <th class="neutral"></th>
+        <th class="neutral"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="yellowBorder"></th>
+        <th></th>
+      </tr>
+      <tr>
+        <th class="blue"></th>
+        <th class="blue"></th>
+        <th class="blue"></th>
+        <th class="blue"></th>
+        <th class="blue"></th>
+        <th class="blue"></th>
+        <th></th>
+        <th class="blueBorder"></th>
+        <th></th>
+        <th class="yellow"></th>
+        <th class="yellow"></th>
+        <th class="yellow"></th>
+        <th class="yellow"></th>
+        <th class="yellow"></th>
+        <th class="yellow"></th>
+      </tr>
+      <tr>
+        <th class="blue"></th>
+        <th class="bluewhite"></th>
+        <th class="bluewhite"></th>
+        <th class="bluewhite"></th>
+        <th class="bluewhite"></th>
+        <th class="blue"></th>
+        <th></th>
+        <th class="blueBorder"></th>
+        <th></th>
+        <th class="yellow"></th>
+        <th class="yellowwhite"></th>
+        <th class="yellowwhite"></th>
+        <th class="yellowwhite"></th>
+        <th class="yellowwhite"></th>
+        <th class="yellow"></th>
+      </tr>
+      <tr>
+        <th class="blue"></th>
+        <th class="bluewhite"></th>
+        <th class="blueBorder"></th>
+        <th class="blueBorder"></th>
+        <th class="bluewhite"></th>
+        <th class="blue"></th>
+        <th></th>
+        <th class="blueBorder"></th>
+        <th></th>
+        <th class="yellow"></th>
+        <th class="yellowwhite"></th>
+        <th class="yellowBorder"></th>
+        <th class="yellowBorder"></th>
+        <th class="yellowwhite"></th>
+        <th class="yellow"></th>
+      </tr>
+      <tr>
+        <th class="blue"></th>
+        <th class="bluewhite"></th>
+        <th class="blueBorder"></th>
+        <th class="blueBorder"></th>
+        <th class="bluewhite"></th>
+        <th class="blue"></th>
+        <th></th>
+        <th class="blueBorder"></th>
+        <th></th>
+        <th class="yellow"></th>
+        <th class="yellowwhite"></th>
+        <th class="yellowBorder"></th>
+        <th class="yellowBorder"></th>
+        <th class="yellowwhite"></th>
+        <th class="yellow"></th>
+      </tr>
+      <tr>
+        <th class="blue"></th>
+        <th class="bluewhite"></th>
+        <th class="bluewhite"></th>
+        <th class="bluewhite"></th>
+        <th class="bluewhite"></th>
+        <th class="blue"></th>
+        <th class="blueBorder"></th>
+        <th class="blueBorder"></th>
+        <th></th>
+        <th class="yellow"></th>
+        <th class="yellowwhite"></th>
+        <th class="yellowwhite"></th>
+        <th class="yellowwhite"></th>
+        <th class="yellowwhite"></th>
+        <th class="yellow"></th>
+      </tr>
+      <tr>
+        <th class="blue"></th>
+        <th class="blue"></th>
+        <th class="blue"></th>
+        <th class="blue"></th>
+        <th class="blue"></th>
+        <th class="blue"></th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th class="yellow"></th>
+        <th class="yellow"></th>
+        <th class="yellow"></th>
+        <th class="yellow"></th>
+        <th class="yellow"></th>
+        <th class="yellow"></th>
+      </tr>
+    </table>
+  </div>
+</body>
+<script src="javascripts/ludoScript.js"></script>
+
+</html>
